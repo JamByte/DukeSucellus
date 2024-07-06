@@ -55,22 +55,6 @@ namespace OSRSXPTracker.DataBase
             }
         }
 
-        public static async Task<PlayerStats> test()
-        {
-            JsonClasses.Root? x = await GetAsync("https://secure.runescape.com/m=hiscore_oldschool/index_lite.json?player=cirno9emoji");
-           
-            if (x == null)
-            {
-                //kill me
-                return null;
-            }
-            else
-            {
-                PlayerStats stats = x.ToPlayerStats();
-                return stats;
-            }
-        
-        }
     }
     public class UpdateXP : IJob
     {
@@ -96,7 +80,6 @@ namespace OSRSXPTracker.DataBase
     }
     class JsonClasses
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         public class Activity
         {
             [JsonProperty("id")]

@@ -23,8 +23,11 @@ namespace OSRSXPTracker.Commands
                 return;
             }
             //This might do somthing /shrug
-            PlayerStats? weekStats = await PlayerDB.active.GetClosestEntryWeek(username);
-            PlayerStats? ps = await GetStats.getPlayerData(username);
+            Task<PlayerStats?> weekStatsTask = PlayerDB.active.GetClosestEntryWeek(username);
+            Task<PlayerStats?> psTask =  GetStats.getPlayerData(username);
+            PlayerStats? weekStats = await weekStatsTask;
+            PlayerStats? ps = await psTask;
+
             ps.PlayerId = username;
             ps.Timestamp = DateTime.Now.ToUniversalTime().Ticks;
 

@@ -52,16 +52,6 @@ namespace MyFirstBot
             
             PlayerDB.active = db;
             await db.context.Database.EnsureCreatedAsync();
-            // await db.GetClosestEntryTime(298374, "cirno9emoji");
-            /*
-        PlayerStats s = await GetStats.test();
-        Player p = new Player();
-        p.Id = "Cirno9Emoji";
-        s.PlayerId = "Cirno9Emoji";
-        await db.AddPlayer(p);
-        db.context.PlayerStats.Add(s);
-        await db.context.SaveChangesAsync();
-            PlayerDB.active.GetClosestEntryWeek("catgirltm");*/
             
             StdSchedulerFactory factory = new StdSchedulerFactory();
             IScheduler scheduler = await factory.GetScheduler();
