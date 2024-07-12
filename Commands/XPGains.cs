@@ -622,7 +622,7 @@ namespace OSRSXPTracker.Commands
     {
         public int Compare(ChangedSkillStats x, ChangedSkillStats y)
         {
-            return x.xpChange - y.xpChange;
+            return  y.xpChange - x.xpChange;
         }
     }
 }

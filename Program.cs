@@ -61,7 +61,8 @@ namespace MyFirstBot
                 .Build();
             ITrigger trigger = TriggerBuilder.Create()
                 .WithIdentity("updateXP", "group1")
-                .WithCronSchedule("0 0,12 * * *")
+                .WithCronSchedule("* * 0,12 * * ?")
+                .ForJob(job)
                 .Build();
 
             await scheduler.ScheduleJob(job, trigger);
