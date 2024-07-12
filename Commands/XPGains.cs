@@ -16,6 +16,7 @@ namespace OSRSXPTracker.Commands
         [Command("xp")]
         public static async ValueTask ExecuteAsync(CommandContext context, string username, int topxshown = 5)
         {
+            await context.DeferResponseAsync();
             bool exists = await PlayerDB.active.CheckIfPlayerIn(username);
             if (!exists)
             {
