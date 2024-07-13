@@ -30,7 +30,7 @@ namespace OSRSXPTracker.Commands
             PlayerStats? ps = await psTask;
 
             ps.PlayerId = username;
-            ps.Timestamp = DateTime.Now.ToUniversalTime().Ticks;
+            
 
             List<ChangedSkillStats> s = GetChangedSkills(weekStats, ps);
             CompareSkillStats comparer = new CompareSkillStats();

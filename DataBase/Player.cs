@@ -15,6 +15,10 @@ namespace OSRSXPTracker.DataBase
     }
     class PlayerStats
     {
+        public PlayerStats() 
+        {
+            this.Timestamp = DateTime.Now.ToUniversalTime().Ticks;
+        }
         public int Id {  get; set; }
         public string PlayerId { get; set; }
         public long Timestamp { get; set; }

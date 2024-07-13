@@ -31,12 +31,24 @@ namespace OSRSXPTracker.DataBase
         public async Task AddPlayerStats(PlayerStats ps) 
         {
             context.PlayerStats.Add(ps);
-            await context.SaveChangesAsync();
+            try
+            {
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and the inner exception
+                Console.WriteLine(ex);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine(ex.InnerException);
+                }
+            }
         }
-        public async Task AddPlayerStatsList(List<PlayerStats> ps)
+        public void AddPlayerStatsList(List<PlayerStats> ps)
         {
             context.PlayerStats.AddRange(ps);
-            await context.SaveChangesAsync();
+            context.SaveChanges();
         }
         public async Task<PlayerStats?> GetClosestEntryTime(long timeStampOffset, string name)
         {

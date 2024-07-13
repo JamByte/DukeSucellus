@@ -66,15 +66,17 @@ namespace OSRSXPTracker.DataBase
             foreach (Player p in players)
             {
                 PlayerStats? ps = await GetStats.getPlayerData(p.Id);
+                
                 if (ps == null)
                 {
                     Console.WriteLine($"{p.Id} data returned null idiot");
                     continue;
                 }
+                ps.PlayerId = p.Id;
                 stats.Add(ps);
 
             }
-            await PlayerDB.active.AddPlayerStatsList(stats);
+            PlayerDB.active.AddPlayerStatsList(stats);
             await Task.CompletedTask;
         }
     }

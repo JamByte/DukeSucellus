@@ -64,9 +64,8 @@ namespace MyFirstBot
                 .WithCronSchedule("0 0 0,12 * * ?")
                 .ForJob(job)
                 .Build();
-
             await scheduler.ScheduleJob(job, trigger);
-
+            
             await client.ConnectAsync();
             await Task.Delay(-1);
         }
